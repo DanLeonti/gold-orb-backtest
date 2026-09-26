@@ -6,7 +6,7 @@ and closes back on the bias side; target = ORB edge, stop = opposite edge ("cons
 signal-bar wick ±0.2 ("aggressive"); time stop 14:00; one trade per day; Mon–Thu by default.
 
 ## Files
-- `gold_orb_filtered.pine` — the strategy with the **ORB range filter** added (`Min ORB Range`, in points or % of price). Paste into TradingView on GC1! 1m or 5m.
+- `gold_orb_filtered.pine` — the strategy with the **ORB range filter** (relative-to-median, points, or % of price) and the **capped stop**. Defaults = recommended config. Paste into TradingView on GC1! 1m.
 - `gold_orb_original.pine` — the script as originally written, for reference.
 - `gold_orb.py` — bar-by-bar Python port used for the numbers below (matches the Pine logic; fills next bar open, stop wins ties, costs 0.25 pt round trip = $25/contract).
 - `orb_lab.py`, `orb_analyze.py` — vectorized 17k-config search (GC/NQ/ES, dev/holdout). Nothing in the family beats chance; see `results/orb_lab_grid_GC_NQ_ES.csv`.
@@ -43,9 +43,27 @@ the edge back to ~0R at every threshold. So the filter is partly a "2025–2026 
 verifiably does: it lifts risk from ~5 pt to ~12 pt per trade, which removes the cost drag. Whether the
 +0.15R of the current regime persists is the open question the forward test below answers.
 
+## Improvement pass (2026-09-26) — what was tried and what held
+`orb_lab2.py`, 2,592 structural variants per timeframe (`results/orb_lab2_variants_GC.csv`): entry (retrace close /
+limit at mid), bias (mid+VWAP / mid / VWAP), stop (edge / capped at 1R / half range), target (edge / half range / 1.5R),
+entry cutoff 11:00, range filter (15 pt / 0.33% / relative to trailing median), Mon–Thu vs Mon–Fri, time stop 14:00 vs
+16:59, break-even at +0.5R. Scored on full sample **and** on 2022–24 / 2025 / 2026 separately, on 1m and 5m.
+
+**Doesn't matter (±0.02R, noise):** target choice, break-even move, 16:59 hold, 11:00 cutoff, Friday.
+**Keep as is:** the retrace-close entry beats a resting limit; VWAP in the bias matters (mid-only bias is the worst choice).
+**Structural, adopted:** cap the stop at the target distance (`cap_stop`) — same P&L, ~25% smaller drawdown, because the
+fill is on the bias side of the midpoint so the edge stop was always the longer leg.
+**The only real lever is the range filter, and the relative version is better than 15 pt.** Range ≥ k × median ORB
+range of the last 20 sessions, k=2.0, 1m, Mon–Thu, capped stop: n=64, 62% win, +0.21R, PF 2.0, +$22.6k, max DD −$6.6k,
+~16 trades/yr. Effect is monotonic in k (1.25 → 0R, 1.5 → +0.09R, 2.0 → +0.21R), holds at 20/40/60-session lookbacks,
+and 2022–24 is ≈0R instead of −0.18R — so it is not only a 2025–26 proxy. Bootstrap 90% CI on avg R: +0.03 to +0.39.
+Caveats: the dollars are still 2026-heavy ($20k of $22.6k); 2022–24 are flat in R and slightly negative in $; the
+5m version is weaker (+0.12R); the config sits at the ~95th percentile of the variants tested, so part of the number
+is selection. `results/trades_1min_rel2x_cap1R_MonThu.csv` has the trades.
+
 ## Forward test (pre-registered)
-Paper or 1-contract, 1m or 5m (pick one and don't switch), conservative stop, Mon–Thu, ORB ≥ 15 pt
-(or 0.33% of price). Log every trade.
+Paper or 1-contract, 1m, conservative stop with cap, Mon–Thu, ORB ≥ 2.0× trailing-20 median (Pine default) —
+or 1.5× if you want ~2x the trade count at a weaker edge. Log every trade.
 - **Confirm:** after 60 trades (~2 years at this rate, so consider MNQ-style micro sizing on MGC to run
   it live earlier), avg R > +0.10 and PF > 1.3.
 - **Kill:** at any point after 30 trades, avg R < 0, or a drawdown worse than −10R (the backtest's worst

@@ -1,5 +1,5 @@
 //@version=6
-strategy("Gold ORB 50% - Dual SL + Range Filter", overlay=true, initial_capital=10000, default_qty_type=strategy.fixed, default_qty_value=1, margin_long=100, margin_short=100, calc_on_every_tick=true)
+strategy("Gold ORB 50% - Dual SL + Range Filter v2", overlay=true, initial_capital=10000, default_qty_type=strategy.fixed, default_qty_value=1, margin_long=100, margin_short=100, calc_on_every_tick=true)
 
 // ==========================================
 // 1. Time, Risk & SL Settings
@@ -16,9 +16,14 @@ tick_buffer = input.float(0.1, title="Tick Buffer for 50% Line", group="Risk Man
 // ---- ORB range filter (added 2026-09-26, backtest: 4yr GC 1m, see README) ----
 // "Points" = fixed 15 pt cutoff (what was tested). "% of price" keeps the cutoff
 // constant as gold re-prices: 15 pt at ~4500 = 0.33%.
-range_mode = input.string("Points", title="Min ORB Range Mode", options=["Points", "% of price"], group="ORB Range Filter")
+// "Relative" = today's ORB range vs the median ORB range of the last N sessions (price-level free;
+// this is the mode that also holds up in 2022-2024). 2.0x ≈ 16 trades/yr, 1.5x ≈ 30 trades/yr.
+range_mode = input.string("Relative (x median)", title="Min ORB Range Mode", options=["Relative (x median)", "Points", "% of price"], group="ORB Range Filter")
+min_orb_rel = input.float(2.0, title="Min ORB Range (x trailing median)", minval=0, step=0.25, group="ORB Range Filter")
+rel_lookback = input.int(20, title="Trailing median lookback (sessions)", minval=5, group="ORB Range Filter")
 min_orb_pts = input.float(15.0, title="Min ORB Range (Pts)", minval=0, group="ORB Range Filter")
 min_orb_pct = input.float(0.33, title="Min ORB Range (% of price)", minval=0, step=0.01, group="ORB Range Filter")
+cap_stop = input.bool(true, title="Cap stop at 1R (stop distance = target distance)", tooltip="The fill is on the bias side of the midpoint, so the ORB-edge stop is usually further than the target. Capping it keeps the same P&L with ~25% less drawdown.", group="Risk Management")
 
 trade_mon = input.bool(true, title="Monday", group="Trading Days")
 trade_tue = input.bool(true, title="Tuesday", group="Trading Days")
@@ -48,6 +53,7 @@ var float orb_mid = na
 var int bias = 0
 var bool trade_taken = false
 var bool range_ok = false
+var float[] orb_ranges = array.new_float()   // history of completed ORB ranges (for the relative filter)
 
 vwap_val = ta.vwap
 
@@ -64,7 +70,11 @@ else if in_orb
 if is_new_trade
     orb_mid := (orb_high + orb_low) / 2.0
     float orb_range = orb_high - orb_low
-    range_ok := range_mode == "Points" ? orb_range >= min_orb_pts : (orb_range / close * 100.0) >= min_orb_pct
+    float med = array.size(orb_ranges) >= math.max(5, rel_lookback / 2) ? array.median(orb_ranges) : na
+    range_ok := range_mode == "Points" ? orb_range >= min_orb_pts : range_mode == "% of price" ? (orb_range / close * 100.0) >= min_orb_pct : (not na(med) and orb_range >= min_orb_rel * med)
+    array.push(orb_ranges, orb_range)
+    if array.size(orb_ranges) > rel_lookback
+        array.shift(orb_ranges)
     if not range_ok
         bias := 0          // range too small: no trade today
     else if close > orb_mid and close > vwap_val
@@ -105,6 +115,9 @@ if in_trade and is_valid_day and range_ok and not trade_taken
             if (orb_high - close) >= min_tp_dist
                 trade_taken := true
                 float sl_level = sl_type == "Aggressive (Candle Wick)" ? (low - aggr_sl_buffer) : orb_low
+                // cap: stop no further from the (expected) fill than the target is. Fill ≈ this bar's close.
+                if cap_stop and sl_type == "Conservative (ORB Edge)"
+                    sl_level := math.max(sl_level, close - (orb_high - close))
                 strategy.entry("Long", strategy.long)
                 strategy.exit("Exit L", "Long", limit=orb_high, stop=sl_level)
     else if bias == -1
@@ -112,6 +125,8 @@ if in_trade and is_valid_day and range_ok and not trade_taken
             if (close - orb_low) >= min_tp_dist
                 trade_taken := true
                 float sl_level = sl_type == "Aggressive (Candle Wick)" ? (high + aggr_sl_buffer) : orb_high
+                if cap_stop and sl_type == "Conservative (ORB Edge)"
+                    sl_level := math.min(sl_level, close + (close - orb_low))
                 strategy.entry("Short", strategy.short)
                 strategy.exit("Exit S", "Short", limit=orb_low, stop=sl_level)
 
