@@ -1,0 +1,406 @@
+################ TEST 1: original ORB strategy by 08:30 news regime (1m, conservative SL)
+-- Mon-Thu
+  all quiet <2x                                      n=364 avgR=-0.087 t=-1.91 win= 56%
+  dev quiet <2x                                      n=204 avgR=-0.190 t=-3.03 win= 50%
+  ho  quiet <2x                                      n=160 avgR=+0.043 t=+0.65 win= 62%
+  all mild 2-4x                                      n= 70 avgR=-0.048 t=-0.46 win= 56%
+  dev mild 2-4x                                      n= 45 avgR=-0.045 t=-0.34 win= 56%
+  ho  mild 2-4x                                      n= 25 avgR=-0.054 t=-0.30 win= 56%
+  all shock >=4x                                     n= 46 avgR=+0.003 t=+0.02 win= 54%
+  dev shock >=4x                                     n= 33 avgR=+0.005 t=+0.03 win= 55%
+  ho  shock >=4x                                     n= 13 avgR=-0.002 t=-0.01 win= 54%
+  all shock >=6x                                     n= 24 avgR=-0.043 t=-0.26 win= 50%
+  dev shock >=6x                                     n= 18 avgR=-0.138 t=-0.68 win= 44%
+  ho  shock >=6x                                     n=  6 avgR=+0.242 t=+1.05 win= 67%
+-- Mon-Fri
+  all quiet <2x                                      n=439 avgR=-0.081 t=-1.96 win= 56%
+  dev quiet <2x                                      n=241 avgR=-0.148 t=-2.59 win= 53%
+  ho  quiet <2x                                      n=198 avgR=-0.001 t=-0.01 win= 60%
+  all mild 2-4x                                      n= 92 avgR=-0.035 t=-0.38 win= 57%
+  dev mild 2-4x                                      n= 59 avgR=-0.074 t=-0.65 win= 54%
+  ho  mild 2-4x                                      n= 33 avgR=+0.037 t=+0.24 win= 61%
+  all shock >=4x                                     n= 68 avgR=-0.013 t=-0.13 win= 53%
+  dev shock >=4x                                     n= 49 avgR=+0.024 t=+0.20 win= 53%
+  ho  shock >=4x                                     n= 19 avgR=-0.109 t=-0.58 win= 53%
+  all shock >=6x                                     n= 39 avgR=-0.033 t=-0.26 win= 51%
+  dev shock >=6x                                     n= 30 avgR=-0.061 t=-0.38 win= 47%
+  ho  shock >=6x                                     n=  9 avgR=+0.060 t=+0.30 win= 67%
+
+################ TEST 2: 08:30 impulse continuation (+) / fade (-); R unit = impulse size (time exits) or stop at pre-news open (brackets)
+-- ratio>=3, impulse window 1m, n days=193, median impulse=4.8pt
+  all brk1R                                          n=190 avgR=-0.219 t=-2.94 win= 43%
+  dev brk1R                                          n=137 avgR=-0.195 t=-2.17 win= 46%
+  ho  brk1R                                          n= 53 avgR=-0.279 t=-2.12 win= 36%
+  all brk2R                                          n=190 avgR=-0.268 t=-2.83 win= 30%
+  dev brk2R                                          n=137 avgR=-0.238 t=-2.06 win= 32%
+  ho  brk2R                                          n= 53 avgR=-0.348 t=-2.12 win= 25%
+  all time1000                                       n=192 avgR=-1.057 t=-1.17 win= 44%
+  dev time1000                                       n=138 avgR=-0.956 t=-0.81 win= 47%
+  ho  time1000                                       n= 54 avgR=-1.316 t=-1.18 win= 35%
+  all time1200                                       n=192 avgR=-0.870 t=-0.77 win= 50%
+  dev time1200                                       n=138 avgR=-1.694 t=-1.24 win= 48%
+  ho  time1200                                       n= 54 avgR=+1.234 t=+0.63 win= 56%
+  all time1359                                       n=192 avgR=-1.207 t=-1.05 win= 50%
+  dev time1359                                       n=138 avgR=-1.831 t=-1.28 win= 48%
+  ho  time1359                                       n= 54 avgR=+0.388 t=+0.22 win= 56%
+  all time900                                        n=192 avgR=-0.531 t=-1.44 win= 43%
+  dev time900                                        n=138 avgR=+0.046 t=+0.14 win= 45%
+  ho  time900                                        n= 54 avgR=-2.004 t=-1.99 win= 37%
+-- ratio>=3, impulse window 2m, n days=193, median impulse=4.9pt
+  all brk1R                                          n=189 avgR=-0.276 t=-3.58 win= 41%
+  dev brk1R                                          n=136 avgR=-0.267 t=-2.99 win= 42%
+  ho  brk1R                                          n= 53 avgR=-0.301 t=-1.95 win= 40%
+  all brk2R                                          n=189 avgR=-0.362 t=-3.86 win= 28%
+  dev brk2R                                          n=136 avgR=-0.311 t=-2.80 win= 29%
+  ho  brk2R                                          n= 53 avgR=-0.492 t=-2.82 win= 23%
+  all time1000                                       n=191 avgR=-3.248 t=-1.41 win= 47%
+  dev time1000                                       n=137 avgR=-0.084 t=-0.16 win= 51%
+  ho  time1000                                       n= 54 avgR=-11.276 t=-1.41 win= 37%
+  all time1200                                       n=191 avgR=-0.615 t=-0.40 win= 50%
+  dev time1200                                       n=137 avgR=-0.045 t=-0.05 win= 49%
+  ho  time1200                                       n= 54 avgR=-2.061 t=-0.41 win= 52%
+  all time1359                                       n=191 avgR=-0.553 t=-0.31 win= 49%
+  dev time1359                                       n=137 avgR=+0.279 t=+0.26 win= 47%
+  ho  time1359                                       n= 54 avgR=-2.662 t=-0.47 win= 56%
+  all time900                                        n=191 avgR=-1.245 t=-1.28 win= 45%
+  dev time900                                        n=137 avgR=-0.488 t=-1.16 win= 44%
+  ho  time900                                        n= 54 avgR=-3.164 t=-0.96 win= 48%
+-- ratio>=3, impulse window 5m, n days=193, median impulse=5.5pt
+  all brk1R                                          n=193 avgR=-0.249 t=-3.43 win= 42%
+  dev brk1R                                          n=138 avgR=-0.231 t=-2.60 win= 44%
+  ho  brk1R                                          n= 55 avgR=-0.292 t=-2.39 win= 36%
+  all brk2R                                          n=193 avgR=-0.262 t=-2.92 win= 32%
+  dev brk2R                                          n=138 avgR=-0.293 t=-2.75 win= 32%
+  ho  brk2R                                          n= 55 avgR=-0.183 t=-1.11 win= 31%
+  all time1000                                       n=193 avgR=-0.995 t=-1.24 win= 49%
+  dev time1000                                       n=138 avgR=-0.979 t=-1.00 win= 52%
+  ho  time1000                                       n= 55 avgR=-1.033 t=-0.76 win= 42%
+  all time1200                                       n=193 avgR=-1.836 t=-1.75 win= 52%
+  dev time1200                                       n=138 avgR=-1.711 t=-1.44 win= 52%
+  ho  time1200                                       n= 55 avgR=-2.149 t=-0.99 win= 51%
+  all time1359                                       n=193 avgR=-2.298 t=-1.99 win= 49%
+  dev time1359                                       n=138 avgR=-1.944 t=-1.58 win= 49%
+  ho  time1359                                       n= 55 avgR=-3.186 t=-1.20 win= 49%
+  all time900                                        n=193 avgR=-0.179 t=-0.43 win= 44%
+  dev time900                                        n=138 avgR=-0.361 t=-0.66 win= 43%
+  ho  time900                                        n= 55 avgR=+0.278 t=+0.60 win= 44%
+-- ratio>=4, impulse window 1m, n days=131, median impulse=6.6pt
+  all brk1R                                          n=130 avgR=-0.225 t=-2.50 win= 42%
+  dev brk1R                                          n= 95 avgR=-0.204 t=-1.87 win= 45%
+  ho  brk1R                                          n= 35 avgR=-0.281 t=-1.82 win= 34%
+  all brk2R                                          n=130 avgR=-0.277 t=-2.50 win= 31%
+  dev brk2R                                          n= 95 avgR=-0.284 t=-2.10 win= 32%
+  ho  brk2R                                          n= 35 avgR=-0.260 t=-1.36 win= 29%
+  all time1000                                       n=130 avgR=-0.724 t=-0.58 win= 44%
+  dev time1000                                       n= 95 avgR=-0.831 t=-0.50 win= 46%
+  ho  time1000                                       n= 35 avgR=-0.433 t=-0.35 win= 37%
+  all time1200                                       n=130 avgR=-1.191 t=-0.83 win= 48%
+  dev time1200                                       n= 95 avgR=-1.492 t=-0.83 win= 46%
+  ho  time1200                                       n= 35 avgR=-0.373 t=-0.17 win= 51%
+  all time1359                                       n=130 avgR=-0.970 t=-0.68 win= 51%
+  dev time1359                                       n= 95 avgR=-1.277 t=-0.73 win= 49%
+  ho  time1359                                       n= 35 avgR=-0.139 t=-0.06 win= 54%
+  all time900                                        n=130 avgR=-0.324 t=-0.91 win= 43%
+  dev time900                                        n= 95 avgR=+0.090 t=+0.25 win= 46%
+  ho  time900                                        n= 35 avgR=-1.448 t=-1.64 win= 34%
+-- ratio>=4, impulse window 2m, n days=131, median impulse=6.4pt
+  all brk1R                                          n=129 avgR=-0.277 t=-3.09 win= 40%
+  dev brk1R                                          n= 94 avgR=-0.261 t=-2.45 win= 41%
+  ho  brk1R                                          n= 35 avgR=-0.321 t=-1.91 win= 34%
+  all brk2R                                          n=129 avgR=-0.375 t=-3.50 win= 27%
+  dev brk2R                                          n= 94 avgR=-0.316 t=-2.42 win= 30%
+  ho  brk2R                                          n= 35 avgR=-0.531 t=-2.97 win= 20%
+  all time1000                                       n=130 avgR=-2.255 t=-1.40 win= 47%
+  dev time1000                                       n= 95 avgR=-0.045 t=-0.06 win= 49%
+  ho  time1000                                       n= 35 avgR=-8.252 t=-1.47 win= 40%
+  all time1200                                       n=130 avgR=-2.099 t=-0.98 win= 45%
+  dev time1200                                       n= 95 avgR=-0.081 t=-0.07 win= 45%
+  ho  time1200                                       n= 35 avgR=-7.574 t=-1.03 win= 46%
+  all time1359                                       n=130 avgR=-1.247 t=-0.57 win= 48%
+  dev time1359                                       n= 95 avgR=+0.185 t=+0.13 win= 47%
+  ho  time1359                                       n= 35 avgR=-5.135 t=-0.72 win= 51%
+  all time900                                        n=130 avgR=-1.209 t=-1.56 win= 43%
+  dev time900                                        n= 95 avgR=-0.444 t=-0.91 win= 44%
+  ho  time900                                        n= 35 avgR=-3.285 t=-1.29 win= 40%
+-- ratio>=4, impulse window 5m, n days=131, median impulse=6.4pt
+  all brk1R                                          n=131 avgR=-0.321 t=-3.85 win= 37%
+  dev brk1R                                          n= 95 avgR=-0.278 t=-2.71 win= 40%
+  ho  brk1R                                          n= 36 avgR=-0.435 t=-3.15 win= 28%
+  all brk2R                                          n=131 avgR=-0.299 t=-2.93 win= 31%
+  dev brk2R                                          n= 95 avgR=-0.305 t=-2.49 win= 32%
+  ho  brk2R                                          n= 36 avgR=-0.281 t=-1.53 win= 28%
+  all time1000                                       n=131 avgR=+0.059 t=+0.08 win= 49%
+  dev time1000                                       n= 95 avgR=-0.037 t=-0.04 win= 52%
+  ho  time1000                                       n= 36 avgR=+0.312 t=+0.29 win= 42%
+  all time1200                                       n=131 avgR=-0.735 t=-0.77 win= 51%
+  dev time1200                                       n= 95 avgR=-0.531 t=-0.66 win= 52%
+  ho  time1200                                       n= 36 avgR=-1.273 t=-0.46 win= 50%
+  all time1359                                       n=131 avgR=-0.658 t=-0.58 win= 51%
+  dev time1359                                       n= 95 avgR=-0.468 t=-0.50 win= 53%
+  ho  time1359                                       n= 36 avgR=-1.159 t=-0.35 win= 47%
+  all time900                                        n=131 avgR=+0.102 t=+0.22 win= 44%
+  dev time900                                        n= 95 avgR=+0.084 t=+0.14 win= 45%
+  ho  time900                                        n= 36 avgR=+0.149 t=+0.32 win= 39%
+-- ratio>=6, impulse window 1m, n days=73, median impulse=9.4pt
+  all brk1R                                          n= 73 avgR=-0.191 t=-1.67 win= 41%
+  dev brk1R                                          n= 55 avgR=-0.187 t=-1.39 win= 44%
+  ho  brk1R                                          n= 18 avgR=-0.202 t=-0.94 win= 33%
+  all brk2R                                          n= 73 avgR=-0.227 t=-1.65 win= 33%
+  dev brk2R                                          n= 55 avgR=-0.199 t=-1.18 win= 35%
+  ho  brk2R                                          n= 18 avgR=-0.313 t=-1.42 win= 28%
+  all time1000                                       n= 73 avgR=-0.662 t=-1.06 win= 42%
+  dev time1000                                       n= 55 avgR=-0.159 t=-0.26 win= 45%
+  ho  time1000                                       n= 18 avgR=-2.201 t=-1.28 win= 33%
+  all time1200                                       n= 73 avgR=-1.434 t=-1.29 win= 45%
+  dev time1200                                       n= 55 avgR=-0.758 t=-0.86 win= 45%
+  ho  time1200                                       n= 18 avgR=-3.502 t=-0.96 win= 44%
+  all time1359                                       n= 73 avgR=-1.356 t=-1.19 win= 45%
+  dev time1359                                       n= 55 avgR=-0.646 t=-0.64 win= 47%
+  ho  time1359                                       n= 18 avgR=-3.526 t=-1.01 win= 39%
+  all time900                                        n= 73 avgR=-0.336 t=-0.75 win= 41%
+  dev time900                                        n= 55 avgR=+0.076 t=+0.18 win= 42%
+  ho  time900                                        n= 18 avgR=-1.595 t=-1.23 win= 39%
+-- ratio>=6, impulse window 2m, n days=73, median impulse=10.4pt
+  all brk1R                                          n= 73 avgR=-0.290 t=-2.49 win= 37%
+  dev brk1R                                          n= 55 avgR=-0.292 t=-2.15 win= 38%
+  ho  brk1R                                          n= 18 avgR=-0.284 t=-1.22 win= 33%
+  all brk2R                                          n= 73 avgR=-0.321 t=-2.37 win= 30%
+  dev brk2R                                          n= 55 avgR=-0.311 t=-1.94 win= 31%
+  ho  brk2R                                          n= 18 avgR=-0.354 t=-1.38 win= 28%
+  all time1000                                       n= 73 avgR=-1.466 t=-0.86 win= 47%
+  dev time1000                                       n= 55 avgR=+0.406 t=+0.64 win= 49%
+  ho  time1000                                       n= 18 avgR=-7.185 t=-1.09 win= 39%
+  all time1200                                       n= 73 avgR=-3.293 t=-0.92 win= 41%
+  dev time1200                                       n= 55 avgR=+0.173 t=+0.19 win= 42%
+  ho  time1200                                       n= 18 avgR=-13.885 t=-0.98 win= 39%
+  all time1359                                       n= 73 avgR=-3.193 t=-0.92 win= 42%
+  dev time1359                                       n= 55 avgR=+0.216 t=+0.19 win= 44%
+  ho  time1359                                       n= 18 avgR=-13.611 t=-1.00 win= 39%
+  all time900                                        n= 73 avgR=-1.335 t=-1.03 win= 44%
+  dev time900                                        n= 55 avgR=-0.046 t=-0.08 win= 44%
+  ho  time900                                        n= 18 avgR=-5.272 t=-1.08 win= 44%
+-- ratio>=6, impulse window 5m, n days=73, median impulse=10.0pt
+  all brk1R                                          n= 73 avgR=-0.213 t=-1.91 win= 40%
+  dev brk1R                                          n= 55 avgR=-0.220 t=-1.65 win= 42%
+  ho  brk1R                                          n= 18 avgR=-0.189 t=-0.95 win= 33%
+  all brk2R                                          n= 73 avgR=-0.128 t=-0.94 win= 37%
+  dev brk2R                                          n= 55 avgR=-0.148 t=-0.91 win= 38%
+  ho  brk2R                                          n= 18 avgR=-0.065 t=-0.26 win= 33%
+  all time1000                                       n= 73 avgR=+0.754 t=+0.90 win= 52%
+  dev time1000                                       n= 55 avgR=+1.092 t=+1.00 win= 56%
+  ho  time1000                                       n= 18 avgR=-0.277 t=-0.45 win= 39%
+  all time1200                                       n= 73 avgR=+0.323 t=+0.54 win= 49%
+  dev time1200                                       n= 55 avgR=+0.168 t=+0.23 win= 51%
+  ho  time1200                                       n= 18 avgR=+0.797 t=+0.72 win= 44%
+  all time1359                                       n= 73 avgR=+0.664 t=+0.84 win= 48%
+  dev time1359                                       n= 55 avgR=+0.559 t=+0.56 win= 51%
+  ho  time1359                                       n= 18 avgR=+0.986 t=+0.88 win= 39%
+  all time900                                        n= 73 avgR=+0.538 t=+0.72 win= 49%
+  dev time900                                        n= 55 avgR=+0.858 t=+0.88 win= 53%
+  ho  time900                                        n= 18 avgR=-0.438 t=-0.88 win= 39%
+
+################ TEST 3a: 10:00 impulse (ratio>=3)
+-- w=1m n days=72
+  all brk1R                                          n= 71 avgR=+0.002 t=+0.01 win= 54%
+  dev brk1R                                          n= 54 avgR=-0.048 t=-0.34 win= 52%
+  ho  brk1R                                          n= 17 avgR=+0.159 t=+0.64 win= 59%
+  all brk2R                                          n= 71 avgR=-0.053 t=-0.32 win= 38%
+  dev brk2R                                          n= 54 avgR=-0.117 t=-0.65 win= 37%
+  ho  brk2R                                          n= 17 avgR=+0.153 t=+0.41 win= 41%
+  all time1030                                       n= 72 avgR=+1.424 t=+1.40 win= 51%
+  dev time1030                                       n= 54 avgR=+0.449 t=+1.35 win= 54%
+  ho  time1030                                       n= 18 avgR=+4.350 t=+1.10 win= 44%
+  all time1200                                       n= 72 avgR=-1.698 t=-1.09 win= 46%
+  dev time1200                                       n= 54 avgR=-0.350 t=-0.77 win= 46%
+  ho  time1200                                       n= 18 avgR=-5.741 t=-0.93 win= 44%
+  all time1359                                       n= 72 avgR=-0.502 t=-0.78 win= 44%
+  dev time1359                                       n= 54 avgR=-0.327 t=-0.62 win= 43%
+  ho  time1359                                       n= 18 avgR=-1.029 t=-0.50 win= 50%
+-- w=2m n days=72
+  all brk1R                                          n= 72 avgR=-0.164 t=-1.35 win= 46%
+  dev brk1R                                          n= 54 avgR=-0.150 t=-1.04 win= 48%
+  ho  brk1R                                          n= 18 avgR=-0.207 t=-0.88 win= 39%
+  all brk2R                                          n= 72 avgR=-0.180 t=-1.14 win= 33%
+  dev brk2R                                          n= 54 avgR=-0.234 t=-1.30 win= 33%
+  ho  brk2R                                          n= 18 avgR=-0.017 t=-0.05 win= 33%
+  all time1030                                       n= 72 avgR=+0.012 t=+0.03 win= 56%
+  dev time1030                                       n= 54 avgR=+0.067 t=+0.12 win= 59%
+  ho  time1030                                       n= 18 avgR=-0.152 t=-0.21 win= 44%
+  all time1200                                       n= 72 avgR=-1.034 t=-1.90 win= 46%
+  dev time1200                                       n= 54 avgR=-1.223 t=-1.93 win= 44%
+  ho  time1200                                       n= 18 avgR=-0.465 t=-0.43 win= 50%
+  all time1359                                       n= 72 avgR=-1.061 t=-1.52 win= 43%
+  dev time1359                                       n= 54 avgR=-1.482 t=-1.83 win= 41%
+  ho  time1359                                       n= 18 avgR=+0.200 t=+0.15 win= 50%
+-- w=5m n days=72
+  all brk1R                                          n= 72 avgR=-0.041 t=-0.37 win= 54%
+  dev brk1R                                          n= 54 avgR=-0.043 t=-0.34 win= 56%
+  ho  brk1R                                          n= 18 avgR=-0.034 t=-0.15 win= 50%
+  all brk2R                                          n= 72 avgR=+0.122 t=+0.79 win= 46%
+  dev brk2R                                          n= 54 avgR=+0.013 t=+0.08 win= 44%
+  ho  brk2R                                          n= 18 avgR=+0.449 t=+1.31 win= 50%
+  all time1030                                       n= 72 avgR=-0.387 t=-0.67 win= 50%
+  dev time1030                                       n= 54 avgR=+0.093 t=+0.21 win= 48%
+  ho  time1030                                       n= 18 avgR=-1.826 t=-0.97 win= 56%
+  all time1200                                       n= 72 avgR=-0.410 t=-0.47 win= 51%
+  dev time1200                                       n= 54 avgR=+0.502 t=+0.71 win= 54%
+  ho  time1200                                       n= 18 avgR=-3.145 t=-1.16 win= 44%
+  all time1359                                       n= 72 avgR=-0.613 t=-0.64 win= 50%
+  dev time1359                                       n= 54 avgR=+0.397 t=+0.50 win= 50%
+  ho  time1359                                       n= 18 avgR=-3.643 t=-1.23 win= 50%
+
+################ TEST 3b: 14:00 FOMC statement impulse (calendar days) and 14:30 presser
+-- 1400 w=1m n=34
+  all brk1R                                          n= 34 avgR=+0.195 t=+1.00 win= 68%
+  all brk2R                                          n= 34 avgR=+0.040 t=+0.15 win= 41%
+  all time1430                                       n= 34 avgR=+1.088 t=+1.45 win= 56%
+  all time1500                                       n= 34 avgR=+1.023 t=+0.53 win= 53%
+  all time1630                                       n= 34 avgR=-3.452 t=-0.57 win= 59%
+-- 1400 w=2m n=34
+  all brk1R                                          n= 34 avgR=+0.117 t=+0.67 win= 62%
+  all brk2R                                          n= 34 avgR=+0.151 t=+0.60 win= 44%
+  all time1430                                       n= 34 avgR=+0.113 t=+0.23 win= 56%
+  all time1500                                       n= 34 avgR=-1.094 t=-0.88 win= 50%
+  all time1630                                       n= 34 avgR=-1.785 t=-0.94 win= 56%
+-- 1400 w=5m n=34
+  all brk1R                                          n= 33 avgR=+0.242 t=+1.44 win= 67%
+  all brk2R                                          n= 33 avgR=+0.268 t=+1.02 win= 48%
+  all time1430                                       n= 34 avgR=+0.195 t=+0.67 win= 53%
+  all time1500                                       n= 34 avgR=+0.660 t=+0.64 win= 53%
+  all time1630                                       n= 34 avgR=+1.281 t=+0.66 win= 56%
+-- 1400 w=15m n=34
+  all brk1R                                          n= 33 avgR=-0.032 t=-0.19 win= 52%
+  all brk2R                                          n= 33 avgR=-0.013 t=-0.06 win= 45%
+  all time1430                                       n= 32 avgR=-0.588 t=-1.26 win= 44%
+  all time1500                                       n= 33 avgR=+0.529 t=+0.34 win= 55%
+  all time1630                                       n= 33 avgR=+0.821 t=+0.69 win= 61%
+-- 1430 w=5m n=34
+  all brk1R                                          n= 33 avgR=-0.362 t=-2.30 win= 33%
+  all brk2R                                          n= 33 avgR=-0.272 t=-1.24 win= 30%
+  all time1500                                       n= 33 avgR=-0.799 t=-0.53 win= 45%
+  all time1530                                       n= 33 avgR=-1.727 t=-0.92 win= 48%
+  all time1630                                       n= 33 avgR=-3.323 t=-1.23 win= 48%
+-- 1430 w=15m n=34
+  all brk1R                                          n= 33 avgR=+0.111 t=+0.68 win= 58%
+  all brk2R                                          n= 33 avgR=+0.363 t=+1.58 win= 55%
+  all time1500                                       n= 33 avgR=+0.612 t=+1.66 win= 67%
+  all time1530                                       n= 33 avgR=+1.574 t=+1.39 win= 61%
+  all time1630                                       n= 33 avgR=+2.002 t=+1.49 win= 58%
+################ PRIMARY (pre-registered): fade 08:30 impulse, ratio>=3, w=2m, target=pre-news open, stop=1x impulse, time stop 10:00
+-- cost 0.25pt RT
+  all                                                n=189 avgR=-0.137 t=-1.88 win= 49%
+  dev                                                n=136 avgR=-0.100 t=-1.19 win= 50%
+  ho                                                 n= 53 avgR=-0.233 t=-1.61 win= 45%
+-- cost 0.75pt RT
+  all                                                n=189 avgR=-0.370 t=-4.05 win= 47%
+  dev                                                n=136 avgR=-0.321 t=-3.38 win= 47%
+  ho                                                 n= 53 avgR=-0.493 t=-2.29 win= 45%
+   by year:
+     2022                                            n= 24 avgR=-0.425 t=-2.04 win= 42%  net$=-6490  reasons tp/sl/time=33/46/21%
+     2023                                            n= 58 avgR=-0.295 t=-1.93 win= 50%  net$=-2490  reasons tp/sl/time=48/43/9%
+     2024                                            n= 54 avgR=-0.303 t=-2.02 win= 46%  net$=+1530  reasons tp/sl/time=43/44/13%
+     2025                                            n= 28 avgR=-0.568 t=-1.54 win= 50%  net$=-4960  reasons tp/sl/time=46/43/11%
+     2026                                            n= 25 avgR=-0.409 t=-2.04 win= 40%  net$=-1695  reasons tp/sl/time=28/52/20%
+   median impulse 4.9pt, median risk 4.9pt, total net $-14105, maxDD $-16620
+-- cost 1.5pt RT
+  all                                                n=189 avgR=-0.718 t=-5.45 win= 42%
+  dev                                                n=136 avgR=-0.653 t=-5.36 win= 40%
+  ho                                                 n= 53 avgR=-0.883 t=-2.51 win= 45%
+
+################ ROBUSTNESS (cost 0.75): threshold x window x stop x time-stop
+  th>=2 w=1 stop=0.5x end=1000:  all n=295 R=-0.735 t=-6.70 | dev n=205 R=-0.888 t=-6.52 | ho n= 90 R=-0.388 t=-2.17
+  th>=2 w=1 stop=0.5x end=1359:  all n=295 R=-0.723 t=-6.55 | dev n=205 R=-0.875 t=-6.38 | ho n= 90 R=-0.378 t=-2.10
+  th>=2 w=1 stop=1.0x end=1000:  all n=295 R=-0.414 t=-5.95 | dev n=205 R=-0.479 t=-5.57 | ho n= 90 R=-0.266 t=-2.29
+  th>=2 w=1 stop=1.0x end=1359:  all n=295 R=-0.399 t=-5.64 | dev n=205 R=-0.459 t=-5.26 | ho n= 90 R=-0.261 t=-2.22
+  th>=2 w=1 stop=2.0x end=1000:  all n=295 R=-0.198 t=-4.42 | dev n=205 R=-0.246 t=-4.50 | ho n= 90 R=-0.088 t=-1.15
+  th>=2 w=1 stop=2.0x end=1359:  all n=295 R=-0.187 t=-4.07 | dev n=205 R=-0.235 t=-4.16 | ho n= 90 R=-0.078 t=-1.00
+  th>=2 w=2 stop=0.5x end=1000:  all n=293 R=-0.903 t=-7.67 | dev n=203 R=-0.952 t=-7.33 | ho n= 90 R=-0.793 t=-3.19
+  th>=2 w=2 stop=0.5x end=1359:  all n=293 R=-0.905 t=-7.65 | dev n=203 R=-0.959 t=-7.34 | ho n= 90 R=-0.784 t=-3.15
+  th>=2 w=2 stop=1.0x end=1000:  all n=293 R=-0.452 t=-6.17 | dev n=203 R=-0.470 t=-5.65 | ho n= 90 R=-0.411 t=-2.78
+  th>=2 w=2 stop=1.0x end=1359:  all n=293 R=-0.432 t=-5.80 | dev n=203 R=-0.449 t=-5.27 | ho n= 90 R=-0.395 t=-2.65
+  th>=2 w=2 stop=2.0x end=1000:  all n=293 R=-0.229 t=-4.90 | dev n=203 R=-0.251 t=-4.72 | ho n= 90 R=-0.180 t=-1.91
+  th>=2 w=2 stop=2.0x end=1359:  all n=293 R=-0.217 t=-4.51 | dev n=203 R=-0.236 t=-4.29 | ho n= 90 R=-0.172 t=-1.81
+  th>=2 w=5 stop=0.5x end=1000:  all n=302 R=-0.918 t=-7.28 | dev n=209 R=-1.027 t=-6.17 | ho n= 93 R=-0.673 t=-4.09
+  th>=2 w=5 stop=0.5x end=1359:  all n=302 R=-0.915 t=-7.22 | dev n=209 R=-1.024 t=-6.12 | ho n= 93 R=-0.670 t=-4.05
+  th>=2 w=5 stop=1.0x end=1000:  all n=302 R=-0.418 t=-5.47 | dev n=209 R=-0.540 t=-5.58 | ho n= 93 R=-0.145 t=-1.25
+  th>=2 w=5 stop=1.0x end=1359:  all n=302 R=-0.388 t=-4.96 | dev n=209 R=-0.508 t=-5.12 | ho n= 93 R=-0.119 t=-1.01
+  th>=2 w=5 stop=2.0x end=1000:  all n=302 R=-0.252 t=-5.22 | dev n=209 R=-0.302 t=-4.99 | ho n= 93 R=-0.139 t=-1.80
+  th>=2 w=5 stop=2.0x end=1359:  all n=302 R=-0.238 t=-4.77 | dev n=209 R=-0.286 t=-4.59 | ho n= 93 R=-0.129 t=-1.61
+  th>=3 w=1 stop=0.5x end=1000:  all n=190 R=-0.550 t=-3.79 | dev n=137 R=-0.739 t=-4.14 | ho n= 53 R=-0.063 t=-0.27
+  th>=3 w=1 stop=0.5x end=1359:  all n=190 R=-0.531 t=-3.63 | dev n=137 R=-0.719 t=-4.00 | ho n= 53 R=-0.045 t=-0.20
+  th>=3 w=1 stop=1.0x end=1000:  all n=190 R=-0.292 t=-3.29 | dev n=137 R=-0.372 t=-3.40 | ho n= 53 R=-0.086 t=-0.59
+  th>=3 w=1 stop=1.0x end=1359:  all n=190 R=-0.269 t=-2.96 | dev n=137 R=-0.343 t=-3.07 | ho n= 53 R=-0.077 t=-0.52
+  th>=3 w=1 stop=2.0x end=1000:  all n=190 R=-0.106 t=-1.99 | dev n=137 R=-0.151 t=-2.33 | ho n= 53 R=+0.012 t=+0.14
+  th>=3 w=1 stop=2.0x end=1359:  all n=190 R=-0.091 t=-1.65 | dev n=137 R=-0.137 t=-2.03 | ho n= 53 R=+0.030 t=+0.33
+  th>=3 w=2 stop=0.5x end=1000:  all n=189 R=-0.772 t=-5.05 | dev n=136 R=-0.727 t=-4.78 | ho n= 53 R=-0.886 t=-2.32
+  th>=3 w=2 stop=0.5x end=1359:  all n=189 R=-0.774 t=-5.03 | dev n=136 R=-0.736 t=-4.79 | ho n= 53 R=-0.871 t=-2.27
+  th>=3 w=2 stop=1.0x end=1000:  all n=189 R=-0.370 t=-4.05 | dev n=136 R=-0.321 t=-3.38 | ho n= 53 R=-0.493 t=-2.29
+  th>=3 w=2 stop=1.0x end=1359:  all n=189 R=-0.340 t=-3.62 | dev n=136 R=-0.290 t=-2.94 | ho n= 53 R=-0.467 t=-2.13
+  th>=3 w=2 stop=2.0x end=1000:  all n=189 R=-0.144 t=-2.58 | dev n=136 R=-0.132 t=-2.27 | ho n= 53 R=-0.175 t=-1.32
+  th>=3 w=2 stop=2.0x end=1359:  all n=189 R=-0.123 t=-2.14 | dev n=136 R=-0.108 t=-1.79 | ho n= 53 R=-0.163 t=-1.20
+  th>=3 w=5 stop=0.5x end=1000:  all n=193 R=-0.573 t=-4.07 | dev n=138 R=-0.634 t=-3.59 | ho n= 55 R=-0.420 t=-1.90
+  th>=3 w=5 stop=0.5x end=1359:  all n=193 R=-0.569 t=-3.99 | dev n=138 R=-0.630 t=-3.53 | ho n= 55 R=-0.415 t=-1.87
+  th>=3 w=5 stop=1.0x end=1000:  all n=193 R=-0.214 t=-2.49 | dev n=138 R=-0.308 t=-2.94 | ho n= 55 R=+0.022 t=+0.15
+  th>=3 w=5 stop=1.0x end=1359:  all n=193 R=-0.177 t=-1.99 | dev n=138 R=-0.274 t=-2.52 | ho n= 55 R=+0.066 t=+0.44
+  th>=3 w=5 stop=2.0x end=1000:  all n=193 R=-0.107 t=-2.04 | dev n=138 R=-0.136 t=-2.14 | ho n= 55 R=-0.032 t=-0.35
+  th>=3 w=5 stop=2.0x end=1359:  all n=193 R=-0.096 t=-1.73 | dev n=138 R=-0.120 t=-1.79 | ho n= 55 R=-0.035 t=-0.35
+  th>=4 w=1 stop=0.5x end=1000:  all n=130 R=-0.435 t=-2.40 | dev n= 95 R=-0.604 t=-2.69 | ho n= 35 R=+0.023 t=+0.08
+  th>=4 w=1 stop=0.5x end=1359:  all n=130 R=-0.399 t=-2.18 | dev n= 95 R=-0.575 t=-2.54 | ho n= 35 R=+0.080 t=+0.29
+  th>=4 w=1 stop=1.0x end=1000:  all n=130 R=-0.217 t=-1.99 | dev n= 95 R=-0.297 t=-2.21 | ho n= 35 R=+0.001 t=+0.01
+  th>=4 w=1 stop=1.0x end=1359:  all n=130 R=-0.194 t=-1.75 | dev n= 95 R=-0.282 t=-2.06 | ho n= 35 R=+0.044 t=+0.25
+  th>=4 w=1 stop=2.0x end=1000:  all n=130 R=-0.079 t=-1.22 | dev n= 95 R=-0.118 t=-1.47 | ho n= 35 R=+0.026 t=+0.25
+  th>=4 w=1 stop=2.0x end=1359:  all n=130 R=-0.065 t=-0.96 | dev n= 95 R=-0.103 t=-1.24 | ho n= 35 R=+0.040 t=+0.37
+  th>=4 w=2 stop=0.5x end=1000:  all n=129 R=-0.609 t=-3.07 | dev n= 94 R=-0.540 t=-2.84 | ho n= 35 R=-0.793 t=-1.51
+  th>=4 w=2 stop=0.5x end=1359:  all n=129 R=-0.605 t=-3.03 | dev n= 94 R=-0.543 t=-2.82 | ho n= 35 R=-0.771 t=-1.46
+  th>=4 w=2 stop=1.0x end=1000:  all n=129 R=-0.284 t=-2.45 | dev n= 94 R=-0.272 t=-2.30 | ho n= 35 R=-0.315 t=-1.09
+  th>=4 w=2 stop=1.0x end=1359:  all n=129 R=-0.240 t=-2.01 | dev n= 94 R=-0.237 t=-1.93 | ho n= 35 R=-0.247 t=-0.84
+  th>=4 w=2 stop=2.0x end=1000:  all n=129 R=-0.084 t=-1.23 | dev n= 94 R=-0.112 t=-1.54 | ho n= 35 R=-0.009 t=-0.05
+  th>=4 w=2 stop=2.0x end=1359:  all n=129 R=-0.076 t=-1.07 | dev n= 94 R=-0.102 t=-1.34 | ho n= 35 R=-0.004 t=-0.03
+  th>=4 w=5 stop=0.5x end=1000:  all n=131 R=-0.290 t=-2.00 | dev n= 95 R=-0.341 t=-2.04 | ho n= 36 R=-0.155 t=-0.53
+  th>=4 w=5 stop=0.5x end=1359:  all n=131 R=-0.271 t=-1.84 | dev n= 95 R=-0.334 t=-1.97 | ho n= 36 R=-0.104 t=-0.35
+  th>=4 w=5 stop=1.0x end=1000:  all n=131 R=-0.059 t=-0.68 | dev n= 95 R=-0.125 t=-1.22 | ho n= 36 R=+0.113 t=+0.67
+  th>=4 w=5 stop=1.0x end=1359:  all n=131 R=-0.019 t=-0.21 | dev n= 95 R=-0.092 t=-0.86 | ho n= 36 R=+0.174 t=+1.00
+  th>=4 w=5 stop=2.0x end=1000:  all n=131 R=-0.029 t=-0.53 | dev n= 95 R=-0.038 t=-0.62 | ho n= 36 R=-0.003 t=-0.03
+  th>=4 w=5 stop=2.0x end=1359:  all n=131 R=-0.033 t=-0.57 | dev n= 95 R=-0.046 t=-0.68 | ho n= 36 R=-0.001 t=-0.01
+  th>=6 w=1 stop=0.5x end=1000:  all n= 73 R=-0.269 t=-1.61 | dev n= 55 R=-0.364 t=-1.91 | ho n= 18 R=+0.019 t=+0.06
+  th>=6 w=1 stop=0.5x end=1359:  all n= 73 R=-0.205 t=-1.19 | dev n= 55 R=-0.315 t=-1.60 | ho n= 18 R=+0.129 t=+0.37
+  th>=6 w=1 stop=1.0x end=1000:  all n= 73 R=-0.084 t=-0.77 | dev n= 55 R=-0.094 t=-0.74 | ho n= 18 R=-0.054 t=-0.24
+  th>=6 w=1 stop=1.0x end=1359:  all n= 73 R=-0.052 t=-0.45 | dev n= 55 R=-0.068 t=-0.51 | ho n= 18 R=-0.005 t=-0.02
+  th>=6 w=1 stop=2.0x end=1000:  all n= 73 R=+0.012 t=+0.21 | dev n= 55 R=-0.026 t=-0.36 | ho n= 18 R=+0.131 t=+1.33
+  th>=6 w=1 stop=2.0x end=1359:  all n= 73 R=+0.022 t=+0.32 | dev n= 55 R=-0.009 t=-0.11 | ho n= 18 R=+0.115 t=+1.08
+  th>=6 w=2 stop=0.5x end=1000:  all n= 73 R=-0.357 t=-1.73 | dev n= 55 R=-0.300 t=-1.28 | ho n= 18 R=-0.533 t=-1.20
+  th>=6 w=2 stop=0.5x end=1359:  all n= 73 R=-0.322 t=-1.53 | dev n= 55 R=-0.268 t=-1.11 | ho n= 18 R=-0.489 t=-1.08
+  th>=6 w=2 stop=1.0x end=1000:  all n= 73 R=-0.168 t=-1.36 | dev n= 55 R=-0.165 t=-1.13 | ho n= 18 R=-0.174 t=-0.76
+  th>=6 w=2 stop=1.0x end=1359:  all n= 73 R=-0.094 t=-0.73 | dev n= 55 R=-0.088 t=-0.57 | ho n= 18 R=-0.113 t=-0.49
+  th>=6 w=2 stop=2.0x end=1000:  all n= 73 R=-0.049 t=-0.69 | dev n= 55 R=-0.070 t=-0.82 | ho n= 18 R=+0.014 t=+0.11
+  th>=6 w=2 stop=2.0x end=1359:  all n= 73 R=-0.020 t=-0.26 | dev n= 55 R=-0.039 t=-0.42 | ho n= 18 R=+0.039 t=+0.30
+  th>=6 w=5 stop=0.5x end=1000:  all n= 73 R=-0.168 t=-0.90 | dev n= 55 R=-0.340 t=-1.55 | ho n= 18 R=+0.357 t=+1.07
+  th>=6 w=5 stop=0.5x end=1359:  all n= 73 R=-0.116 t=-0.61 | dev n= 55 R=-0.305 t=-1.37 | ho n= 18 R=+0.461 t=+1.37
+  th>=6 w=5 stop=1.0x end=1000:  all n= 73 R=-0.077 t=-0.66 | dev n= 55 R=-0.127 t=-0.90 | ho n= 18 R=+0.074 t=+0.35
+  th>=6 w=5 stop=1.0x end=1359:  all n= 73 R=-0.025 t=-0.20 | dev n= 55 R=-0.071 t=-0.48 | ho n= 18 R=+0.117 t=+0.56
+  th>=6 w=5 stop=2.0x end=1000:  all n= 73 R=-0.069 t=-0.97 | dev n= 55 R=-0.084 t=-1.00 | ho n= 18 R=-0.022 t=-0.16
+  th>=6 w=5 stop=2.0x end=1359:  all n= 73 R=-0.065 t=-0.84 | dev n= 55 R=-0.084 t=-0.91 | ho n= 18 R=-0.006 t=-0.04
+
+################ target variants (th>=3,w=2,stop 1x,end 10:00, cost .75): target = fraction of impulse instead of full retrace
+  tgt 0.5x impulse                                   n=191 avgR=-0.502 t=-5.20 win= 53%
+  dev                                                n=137 avgR=-0.451 t=-4.53 win= 53%
+  ho                                                 n= 54 avgR=-0.633 t=-2.74 win= 56%
+  tgt 1.0x impulse                                   n=191 avgR=-0.433 t=-4.14 win= 46%
+  dev                                                n=137 avgR=-0.385 t=-3.45 win= 46%
+  ho                                                 n= 54 avgR=-0.555 t=-2.32 win= 46%
+  tgt 1.5x impulse                                   n=191 avgR=-0.383 t=-3.40 win= 42%
+  dev                                                n=137 avgR=-0.312 t=-2.52 win= 44%
+  ho                                                 n= 54 avgR=-0.563 t=-2.29 win= 39%
+
+################ same fade at 10:00 (ratio>=3) and 14:00 FOMC (calendar) — small n, for completeness
+  10:00 th>=3 w=1                                    n= 71 avgR=-0.344 t=-2.56 win= 45%
+  10:00 th>=3 w=2                                    n= 72 avgR=-0.376 t=-2.69 win= 46%
+  10:00 th>=3 w=5                                    n= 72 avgR=-0.412 t=-3.15 win= 43%
+  14:00 FOMC w=1                                     n= 34 avgR=-0.847 t=-2.97 win= 26%
+  14:00 FOMC w=2                                     n= 34 avgR=-0.677 t=-3.35 win= 32%
+  14:00 FOMC w=5                                     n= 33 avgR=-0.548 t=-3.21 win= 30%
+
+################ NON-shock days control (ratio<2): does the fade 'work' on quiet days too? (if yes, it's not a news effect)
+  quiet-day fade w=2                                 n=728 avgR=-1.256 t=-18.65 win= 30%
+  dev                                                n=395 avgR=-1.471 t=-15.80 win= 26%
+  ho                                                 n=333 avgR=-1.000 t=-10.46 win= 36%

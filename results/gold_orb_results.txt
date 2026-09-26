@@ -1,0 +1,42 @@
+1min cons Mon-Thu                        n= 490 win=55.3% avgR=-0.080 t=-2.03 avg$=   +6.1 tot$=    +2980 PF=1.02 maxDD$=  -21175 tp= 53% sl= 42% time=  5%
+   2022                                  n=  55 win=47.3% avgR=-0.240 t=-2.01 avg$= -102.8 tot$=    -5655 PF=0.53 maxDD$=   -6775 tp= 45% sl= 49% time=  5%
+   2023                                  n= 125 win=46.4% avgR=-0.211 t=-2.62 avg$=  -75.8 tot$=    -9475 PF=0.66 maxDD$=  -12055 tp= 44% sl= 50% time=  6%
+   2024                                  n= 111 win=59.5% avgR=-0.037 t=-0.45 avg$=  -25.1 tot$=    -2785 PF=0.88 maxDD$=   -6505 tp= 57% sl= 40% time=  4%
+   2025                                  n= 117 win=58.1% avgR=-0.030 t=-0.39 avg$=  +45.8 tot$=    +5355 PF=1.18 maxDD$=   -5345 tp= 56% sl= 38% time=  5%
+   2026                                  n=  82 win=64.6% avgR=+0.098 t=+1.06 avg$= +189.5 tot$=   +15540 PF=1.42 maxDD$=  -10070 tp= 63% sl= 34% time=  2%
+1min cons Mon-Fri                        n= 609 win=55.7% avgR=-0.072 t=-2.05 avg$=   +4.4 tot$=    +2675 PF=1.02 maxDD$=  -18945 tp= 54% sl= 42% time=  5%
+1min aggr Mon-Thu                        n= 490 win=25.7% avgR=-0.201 t=-1.75 avg$=  -13.0 tot$=    -6360 PF=0.90 maxDD$=  -11695 tp= 25% sl= 74% time=  0%
+   2022                                  n=  55 win=20.0% avgR=-0.675 t=-3.11 avg$=  -37.5 tot$=    -2065 PF=0.57 maxDD$=   -2810 tp= 20% sl= 80% time=  0%
+   2023                                  n= 125 win=19.2% avgR=-0.548 t=-2.88 avg$=  -39.5 tot$=    -4935 PF=0.54 maxDD$=   -5560 tp= 18% sl= 81% time=  1%
+   2024                                  n= 111 win=28.8% avgR=-0.167 t=-0.65 avg$=   -6.6 tot$=     -735 PF=0.93 maxDD$=   -2905 tp= 29% sl= 71% time=  0%
+   2025                                  n= 117 win=29.9% avgR=+0.031 t=+0.14 avg$=   +6.6 tot$=     +775 PF=1.05 maxDD$=   -2825 tp= 29% sl= 70% time=  1%
+   2026                                  n=  82 win=29.3% avgR=+0.272 t=+0.73 avg$=   +7.3 tot$=     +600 PF=1.03 maxDD$=   -6140 tp= 29% sl= 71% time=  0%
+1min aggr Mon-Fri                        n= 609 win=25.5% avgR=-0.246 t=-2.52 avg$=   -4.6 tot$=    -2825 PF=0.96 maxDD$=  -12005 tp= 25% sl= 75% time=  0%
+5min cons Mon-Thu                        n= 445 win=57.1% avgR=-0.112 t=-2.96 avg$=   -2.2 tot$=     -985 PF=0.99 maxDD$=  -31580 tp= 55% sl= 39% time=  6%
+   2022                                  n=  45 win=42.2% avgR=-0.330 t=-2.83 avg$= -188.1 tot$=    -8465 PF=0.33 maxDD$=   -8300 tp= 42% sl= 47% time= 11%
+   2023                                  n= 111 win=52.3% avgR=-0.165 t=-2.09 avg$=  -58.3 tot$=    -6475 PF=0.72 maxDD$=   -9265 tp= 50% sl= 42% time=  8%
+   2024                                  n= 104 win=58.7% avgR=-0.103 t=-1.32 avg$=  -61.4 tot$=    -6390 PF=0.72 maxDD$=   -8760 tp= 56% sl= 39% time=  5%
+   2025                                  n= 101 win=55.4% avgR=-0.167 t=-2.18 avg$=  -48.6 tot$=    -4905 PF=0.83 maxDD$=  -10425 tp= 52% sl= 41% time=  7%
+   2026                                  n=  84 win=71.4% avgR=+0.131 t=+1.60 avg$= +300.6 tot$=   +25250 PF=1.81 maxDD$=   -6220 tp= 70% sl= 27% time=  2%
+5min cons Mon-Fri                        n= 551 win=58.4% avgR=-0.089 t=-2.63 avg$=   +9.9 tot$=    +5455 PF=1.04 maxDD$=  -26945 tp= 56% sl= 38% time=  6%
+5min aggr Mon-Thu                        n= 445 win=37.5% avgR=-0.245 t=-3.61 avg$=  -38.2 tot$=   -17005 PF=0.78 maxDD$=  -18200 tp= 37% sl= 62% time=  1%
+   2022                                  n=  45 win=33.3% avgR=-0.420 t=-2.42 avg$=  -78.6 tot$=    -3535 PF=0.46 maxDD$=   -3365 tp= 33% sl= 67% time=  0%
+   2023                                  n= 111 win=31.5% avgR=-0.433 t=-3.05 avg$=  -47.1 tot$=    -5225 PF=0.59 maxDD$=   -6570 tp= 31% sl= 68% time=  1%
+   2024                                  n= 104 win=38.5% avgR=-0.264 t=-1.95 avg$=  -31.9 tot$=    -3320 PF=0.76 maxDD$=   -4920 tp= 38% sl= 62% time=  0%
+   2025                                  n= 101 win=39.6% avgR=-0.166 t=-1.16 avg$=  -35.2 tot$=    -3555 PF=0.80 maxDD$=   -4165 tp= 39% sl= 60% time=  1%
+   2026                                  n=  84 win=44.0% avgR=+0.024 t=+0.14 avg$=  -16.3 tot$=    -1370 PF=0.95 maxDD$=   -6060 tp= 43% sl= 55% time=  2%
+5min aggr Mon-Fri                        n= 551 win=37.4% avgR=-0.230 t=-3.71 avg$=  -29.4 tot$=   -16205 PF=0.83 maxDD$=  -16660 tp= 37% sl= 62% time=  1%
+15min cons Mon-Thu                       n= 372 win=64.8% avgR=-0.023 t=-0.62 avg$=  +19.9 tot$=    +7420 PF=1.08 maxDD$=  -13310 tp= 62% sl= 31% time=  7%
+   2022                                  n=  38 win=71.1% avgR=+0.043 t=+0.34 avg$=  +42.1 tot$=    +1600 PF=1.43 maxDD$=    -775 tp= 68% sl= 29% time=  3%
+   2023                                  n=  85 win=56.5% avgR=-0.110 t=-1.31 avg$=  -32.1 tot$=    -2725 PF=0.83 maxDD$=   -6135 tp= 51% sl= 35% time= 14%
+   2024                                  n=  91 win=60.4% avgR=-0.103 t=-1.34 avg$=  -63.5 tot$=    -5775 PF=0.70 maxDD$=   -6635 tp= 59% sl= 34% time=  7%
+   2025                                  n=  84 win=72.6% avgR=+0.106 t=+1.41 avg$=  +57.6 tot$=    +4840 PF=1.28 maxDD$=   -6195 tp= 70% sl= 24% time=  6%
+   2026                                  n=  74 win=67.6% avgR=-0.007 t=-0.08 avg$= +128.1 tot$=    +9480 PF=1.28 maxDD$=   -6005 tp= 68% sl= 30% time=  3%
+15min cons Mon-Fri                       n= 486 win=63.0% avgR=-0.049 t=-1.45 avg$=  -10.5 tot$=    -5080 PF=0.96 maxDD$=  -18285 tp= 60% sl= 32% time=  7%
+15min aggr Mon-Thu                       n= 372 win=48.9% avgR=-0.173 t=-2.88 avg$=  -22.9 tot$=    -8510 PF=0.89 maxDD$=  -17185 tp= 48% sl= 50% time=  2%
+   2022                                  n=  38 win=60.5% avgR=-0.044 t=-0.25 avg$=  +37.4 tot$=    +1420 PF=1.46 maxDD$=    -840 tp= 58% sl= 39% time=  3%
+   2023                                  n=  85 win=35.3% avgR=-0.426 t=-3.62 avg$=  -79.8 tot$=    -6785 PF=0.54 maxDD$=   -7195 tp= 33% sl= 64% time=  4%
+   2024                                  n=  91 win=44.0% avgR=-0.270 t=-2.41 avg$=  -71.5 tot$=    -6505 PF=0.60 maxDD$=   -7025 tp= 44% sl= 55% time=  1%
+   2025                                  n=  84 win=54.8% avgR=-0.102 t=-0.82 avg$=   +9.3 tot$=     +780 PF=1.05 maxDD$=   -5585 tp= 54% sl= 45% time=  1%
+   2026                                  n=  74 win=58.1% avgR=+0.089 t=+0.57 avg$=  +34.9 tot$=    +2580 PF=1.09 maxDD$=   -8300 tp= 58% sl= 41% time=  1%
+15min aggr Mon-Fri                       n= 486 win=47.1% avgR=-0.186 t=-3.52 avg$=  -43.6 tot$=   -21200 PF=0.80 maxDD$=  -23615 tp= 46% sl= 52% time=  3%

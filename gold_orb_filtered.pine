@@ -1,0 +1,123 @@
+//@version=6
+strategy("Gold ORB 50% - Dual SL + Range Filter", overlay=true, initial_capital=10000, default_qty_type=strategy.fixed, default_qty_value=1, margin_long=100, margin_short=100, calc_on_every_tick=true)
+
+// ==========================================
+// 1. Time, Risk & SL Settings
+// ==========================================
+orb_session_str = "0820-0849"
+trade_session_str = "0850-1359"
+tz = "America/New_York"
+
+sl_type = input.string("Conservative (ORB Edge)", title="Stop Loss Strategy", options=["Conservative (ORB Edge)", "Aggressive (Candle Wick)"], group="Risk Management")
+aggr_sl_buffer = input.float(0.2, title="Aggressive SL Buffer (Pts)", group="Risk Management")
+min_tp_dist = input.float(1.0, title="Minimum TP Distance (Pts)", group="Risk Management")
+tick_buffer = input.float(0.1, title="Tick Buffer for 50% Line", group="Risk Management")
+
+// ---- ORB range filter (added 2026-09-26, backtest: 4yr GC 1m, see README) ----
+// "Points" = fixed 15 pt cutoff (what was tested). "% of price" keeps the cutoff
+// constant as gold re-prices: 15 pt at ~4500 = 0.33%.
+range_mode = input.string("Points", title="Min ORB Range Mode", options=["Points", "% of price"], group="ORB Range Filter")
+min_orb_pts = input.float(15.0, title="Min ORB Range (Pts)", minval=0, group="ORB Range Filter")
+min_orb_pct = input.float(0.33, title="Min ORB Range (% of price)", minval=0, step=0.01, group="ORB Range Filter")
+
+trade_mon = input.bool(true, title="Monday", group="Trading Days")
+trade_tue = input.bool(true, title="Tuesday", group="Trading Days")
+trade_wed = input.bool(true, title="Wednesday", group="Trading Days")
+trade_thu = input.bool(true, title="Thursday", group="Trading Days")
+trade_fri = input.bool(false, title="Friday", group="Trading Days")
+
+// ==========================================
+// 2. Day & Session Logic
+// ==========================================
+day_of_week = dayofweek(time, tz)
+is_valid_day = (day_of_week == dayofweek.monday and trade_mon) or (day_of_week == dayofweek.tuesday and trade_tue) or (day_of_week == dayofweek.wednesday and trade_wed) or (day_of_week == dayofweek.thursday and trade_thu) or (day_of_week == dayofweek.friday and trade_fri)
+
+in_orb = time(timeframe.period, orb_session_str, tz)
+in_trade = time(timeframe.period, trade_session_str, tz)
+
+is_new_orb = in_orb and not in_orb[1]
+is_new_trade = in_trade and not in_trade[1]
+is_trade_end = not in_trade and in_trade[1]
+
+// ==========================================
+// 3. ORB Calculation, Range Filter & Bias
+// ==========================================
+var float orb_high = na
+var float orb_low = na
+var float orb_mid = na
+var int bias = 0
+var bool trade_taken = false
+var bool range_ok = false
+
+vwap_val = ta.vwap
+
+if is_new_orb
+    orb_high := high
+    orb_low := low
+    bias := 0
+    trade_taken := false
+    range_ok := false
+else if in_orb
+    orb_high := math.max(orb_high, high)
+    orb_low := math.min(orb_low, low)
+
+if is_new_trade
+    orb_mid := (orb_high + orb_low) / 2.0
+    float orb_range = orb_high - orb_low
+    range_ok := range_mode == "Points" ? orb_range >= min_orb_pts : (orb_range / close * 100.0) >= min_orb_pct
+    if not range_ok
+        bias := 0          // range too small: no trade today
+    else if close > orb_mid and close > vwap_val
+        bias := 1
+    else if close < orb_mid and close < vwap_val
+        bias := -1
+    else
+        bias := 0
+
+// ==========================================
+// 4. Visuals
+// ==========================================
+var box orb_box = na
+var line mid_line = na
+
+if is_new_trade and is_valid_day
+    color bc = range_ok ? color.new(#FFD700, 70) : color.new(color.gray, 70)
+    color bg = range_ok ? color.new(#FFD700, 90) : color.new(color.gray, 94)
+    orb_box := box.new(left=bar_index, top=orb_high, right=bar_index, bottom=orb_low, border_color=bc, bgcolor=bg, extend=extend.right)
+    mid_line := line.new(bar_index, orb_mid, bar_index, orb_mid, color=range_ok ? color.new(#FFA500, 0) : color.new(color.gray, 30), style=line.style_dashed, width=2, extend=extend.right)
+
+if is_trade_end
+    if not na(orb_box)
+        box.set_extend(orb_box, extend.none)
+        box.set_right(orb_box, bar_index)
+    if not na(mid_line)
+        line.set_extend(mid_line, extend.none)
+        line.set_x2(mid_line, bar_index)
+
+bgcolor(in_trade and is_valid_day and range_ok ? color.new(color.blue, 98) : na)
+
+// ==========================================
+// 5. Entry & Exit Logic (Dual SL)
+// ==========================================
+if in_trade and is_valid_day and range_ok and not trade_taken
+    if bias == 1
+        if low <= (orb_mid + tick_buffer) and close > orb_mid
+            if (orb_high - close) >= min_tp_dist
+                trade_taken := true
+                float sl_level = sl_type == "Aggressive (Candle Wick)" ? (low - aggr_sl_buffer) : orb_low
+                strategy.entry("Long", strategy.long)
+                strategy.exit("Exit L", "Long", limit=orb_high, stop=sl_level)
+    else if bias == -1
+        if high >= (orb_mid - tick_buffer) and close < orb_mid
+            if (close - orb_low) >= min_tp_dist
+                trade_taken := true
+                float sl_level = sl_type == "Aggressive (Candle Wick)" ? (high + aggr_sl_buffer) : orb_high
+                strategy.entry("Short", strategy.short)
+                strategy.exit("Exit S", "Short", limit=orb_low, stop=sl_level)
+
+// ==========================================
+// 6. Time Stop
+// ==========================================
+if is_trade_end
+    strategy.cancel_all()
+    strategy.close_all(comment="Time Out")
