@@ -55,3 +55,7 @@ Paper or 1-contract, 1m or 5m (pick one and don't switch), conservative stop, Mo
 TradingView numbers will differ somewhat from the Python ones: TV fills without bar magnifier assume
 an intrabar order, its GC1! data rolls differently from the volume-rolled continuous used here, and
 slippage/commission must be set in the strategy properties (used here: 1 tick each side + $2.50/side).
+
+## Trade list for the chosen config
+`results/trades_1min_cons_MonThu_ORB15.csv` — all 117 trades (1m, conservative stop, Mon–Thu, ORB ≥ 15 pt), NY time,
+with ORB levels, stop/target, exit reason, points and $ net of costs (0.25 pt = $25 round trip per GC), R and cumulative $.
